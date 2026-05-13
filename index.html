@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow | Gestión de Hábitos</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script type="module" src="src/main.js"></script>
+</head>
+<body>
+
+    <main id="app">
+        <header>
+            <h1>FocusFlow</h1>
+            <p id="current-date"></p>
+        </header>
+
+        <section class="form-container">
+            <form id="habit-form">
+                <input 
+                    type="text" 
+                    id="habit-name" 
+                    placeholder="Ej: Meditar 10 min..." 
+                    required
+                    maxlength="50"
+                >
+                <select id="habit-category">
+                    <option value="salud">Salud</option>
+                    <option value="mente">Mente</option>
+                    <option value="trabajo">Trabajo</option>
+                </select>
+                <button type="submit" id="add-btn">Añadir</button>
+            </form>
+        </section>
+
+        <nav class="filters">
+            <button class="filter-btn active" id="show-all">Todos</button>
+            <button class="filter-btn" id="show-completed">Completados</button>
+            <button class="filter-btn" id="show-pending">Pendientes</button>
+        </nav>
+
+        <section id="habit-list" class="habit-list">
+            <div class="empty-state">
+                <p>No tienes hábitos aún. ¡Empieza creando uno arriba!</p>
+            </div>
+        </section>
+
+        <footer class="stats">
+            <p>Hábitos activos: <span id="total-count">0</span></p>
+        </footer title="stats">
+    </main>
+</body>
+</html>

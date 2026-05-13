@@ -1,0 +1,181 @@
+/* --- CONFIGURACIÓN Y VARIABLES --- */
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #2c3e50;
+    --primary: #3498db;
+    
+    /* Colores por categoría */
+    --salud-bg: #e8f5e9;
+    --salud-accent: #2ecc71;
+    --mente-bg: #f3e5f5;
+    --mente-accent: #9b59b6;
+    --trabajo-bg: #fff3e0;
+    --trabajo-accent: #f39c12;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+#app {
+    width: 100%;
+    max-width: 550px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* --- TARJETA DEL FORMULARIO --- */
+.form-container {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+#habit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#habit-form input, #habit-form select {
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#habit-form input:focus { border-color: var(--primary); }
+
+#add-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+#add-btn:hover { background: #2980b9; transform: scale(1.02); }
+
+/* --- FILTROS (BOTONES DE NAVEGACIÓN) --- */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.filter-btn {
+    background: #e0e0e0;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+/* El "Marcador" de botón activo */
+.filter-btn.active {
+    background: var(--text-main);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+}
+
+/* --- TARJETAS DE HÁBITOS (LI) --- */
+.habit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.habit-item {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border-left: 6px solid #bdc3c7; /* Color base */
+    transition: all 0.3s ease;
+}
+
+/* Ajuste de colores por clase de categoría */
+.habit-item.salud { border-left-color: var(--salud-accent); background-color: var(--salud-bg); }
+.habit-item.mente { border-left-color: var(--mente-accent); background-color: var(--mente-bg); }
+.habit-item.trabajo { border-left-color: var(--trabajo-accent); background-color: var(--trabajo-bg); }
+
+.habit-title {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.habit-details {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #555;
+}
+
+/* --- BOTONES DE LAS TARJETAS --- */
+.habit-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toggle-btn, .remove-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.toggle-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.toggle-btn:hover, .remove-btn:hover {
+    opacity: 0.8;
+}
+
+/* Estilo para hábitos completados (opcional si añades clase 'completed') */
+.habit-item.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #7f8c8d;
+}
