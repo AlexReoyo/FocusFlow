@@ -21,10 +21,15 @@ export class HabitView {
             li.className = `habit-item ${habit.status}`;
             li.classList.add(habit.type.toLowerCase()); // Clase adicional según el tipo de hábito
 
+            const isCompleted = habit.status === 'completed';
+            const toggleBtnClass = `toggle-btn${isCompleted ? ' completed' : ''}`;
+            const toggleBtnDisabled = isCompleted ? 'disabled' : '';
+            const toggleBtnText = isCompleted ? 'Completado' : 'Completar';
+
             li.innerHTML = `
-                <div class="habit-content" class="${habit.type.toLowerCase()} class="${habit.status}">
+                <div class="habit-content ${habit.type.toLowerCase()} ${habit.status}">
                     <h3 class="habit-title">${habit.name}</h3>
-                    
+
                     <div class="habit-details">
                         <span class="detail-item date">
                              Inicio: ${habit.creationDate.toDateString()}
@@ -32,9 +37,9 @@ export class HabitView {
                         <br>
                         <span class="detail-item streak">
                              ${habit.daysHistory.length || 0} días🔥
-                        </span> 
+                        </span>
                         <br>
-                        
+
                         <span class="detail-item type">
                              ${habit.type.toLowerCase()}
                         </span>
@@ -45,8 +50,8 @@ export class HabitView {
                 </div>
 
                 <div class="habit-btns">
-                    <button class="toggle-btn" data-id="${habit.id}" title="Cambiar estado">
-                        Completar
+                    <button class="${toggleBtnClass}" data-id="${habit.id}" title="Cambiar estado" ${toggleBtnDisabled} aria-disabled="${isCompleted}">
+                        ${toggleBtnText}
                     </button>
                     <button class="remove-btn" data-id="${habit.id}" title="Eliminar">
                         Eliminar
@@ -89,6 +94,7 @@ export class HabitView {
         habitListElement.addEventListener('click', (event) => {
             const btn = event.target.closest('.toggle-btn');
             if (!btn) return;
+            if (btn.classList.contains('completed')) return; // Evitar completar si ya está completado  
             const habitId = btn.dataset.id;
             handler(habitId);
         });

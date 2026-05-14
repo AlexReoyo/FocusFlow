@@ -30,11 +30,11 @@ export class StorageService {
 
     getLastDate() {
         const dateData = localStorage.getItem(this.DATE_KEY);
-        return dateData ? new Date(dateData) : null;
+        return dateData ? new Date(Number(dateData)) : null;
     }
 
     updateLastDate() {
-        const today = new Date().toLocaleDateString();
-        localStorage.setItem(this.DATE_KEY, today);
+        const timestamp = Date.now();
+        localStorage.setItem(this.DATE_KEY, String(timestamp));
     }
 }
